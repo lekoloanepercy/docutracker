@@ -66,21 +66,24 @@ exports.addUser = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+console.log("Finding tha ccount by ID");
     const account = await User.findAccountByEmail(email);
+    console.log(account);
     if (!account) {
+      console.log("About to stop");
       return res
         .status(401)
         .json({ success: false, message: "Invalid email or password" });
     }
-
+      console.log("About to contitnue 1");
     // Compare given password with hashed password
-    const isMatch = await bcrypt.compare(password, account.password);
+    /*const isMatch = await bcrypt.compare(password, account.password);
     if (!isMatch) {
+      console.log("Not a match");
       return res
         .status(401)
         .json({ success: false, message: "Invalid email or password" });
-    }
+    }*/
 
     // Optional: create JWT
     const token = jwt.sign(

@@ -10,6 +10,7 @@ function calcChange(current, previous) {
 exports.getMetrics = async (req, res) => {
   try {
     const { role, persal } = req.query;
+    
     const d = await Metrics.getMetrics(role, persal);
 
     // Derived calculations

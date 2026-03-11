@@ -1,0 +1,203 @@
+### =========================================
+### DOCUTRACKER API TEST FILE
+### =========================================
+
+@baseUrl = http://localhost:5000
+@token = PASTE_JWT_TOKEN_HERE
+
+
+
+### =========================================
+### AUTH
+### =========================================
+
+### LOGIN
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  // ADD LOGIN DATA HERE
+  "email": "example@email.com",
+  "password": "your_password"
+}
+
+
+### REGISTER USER
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  // ADD USER DATA HERE
+  "email": "newuser@email.com",
+  "password": "password123",
+  "persalNumber": "123456789",
+  "role": "USER"
+}
+
+
+### =========================================
+### USERS
+### =========================================
+
+### GET ALL USERS
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+
+
+### GET USER BY ID
+GET {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+
+
+### CREATE USER
+POST {{baseUrl}}/users
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD USER DATA HERE
+  "email": "user@email.com",
+  "persalNumber": "123456789",
+  "role": "USER"
+}
+
+
+### UPDATE USER
+PATCH {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD FIELDS TO UPDATE
+  "role": "MANAGER"
+}
+
+
+### DELETE USER
+DELETE {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+
+
+
+### =========================================
+### DOCUMENTS
+### =========================================
+
+### GET ALL DOCUMENTS
+GET {{baseUrl}}/documents
+Authorization: Bearer {{token}}
+
+
+### GET DOCUMENT BY ID
+GET {{baseUrl}}/documents/1
+Authorization: Bearer {{token}}
+
+
+### CREATE DOCUMENT
+POST {{baseUrl}}/documents
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD DOCUMENT DATA HERE
+  "title": "Document Title",
+  "description": "Document description",
+  "department": "Finance"
+}
+
+
+### UPDATE DOCUMENT
+PATCH {{baseUrl}}/documents/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD DOCUMENT UPDATE DATA
+  "status": "APPROVED"
+}
+
+
+### DELETE DOCUMENT
+DELETE {{baseUrl}}/documents/1
+Authorization: Bearer {{token}}
+
+
+
+### =========================================
+### TASKS
+### =========================================
+
+### GET ALL TASKS
+GET {{baseUrl}}/tasks
+Authorization: Bearer {{token}}
+
+
+### GET TASK BY ID
+GET {{baseUrl}}/tasks/1
+Authorization: Bearer {{token}}
+
+
+### CREATE TASK
+POST {{baseUrl}}/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD TASK DATA HERE
+  "title": "Review Document",
+  "documentId": 1,
+  "assignedTo": 1
+}
+
+
+### UPDATE TASK
+PATCH {{baseUrl}}/tasks/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD TASK UPDATE DATA
+  "status": "COMPLETED"
+}
+
+
+### DELETE TASK
+DELETE {{baseUrl}}/tasks/1
+Authorization: Bearer {{token}}
+
+
+
+### =========================================
+### DOCUMENT WORKFLOW (OPTIONAL IF YOU HAVE)
+### =========================================
+
+### APPROVE DOCUMENT
+PATCH {{baseUrl}}/documents/1/approve
+Authorization: Bearer {{token}}
+
+
+### REJECT DOCUMENT
+PATCH {{baseUrl}}/documents/1/reject
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD REJECTION REASON
+  "reason": "Missing information"
+}
+
+
+### ASSIGN DOCUMENT
+PATCH {{baseUrl}}/documents/1/assign
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // ADD USER TO ASSIGN
+  "assignedTo": 2
+}
+
+
+### DOCUMENT HISTORY
+GET {{baseUrl}}/documents/1/history
+Authorization: Bearer {{token}}
