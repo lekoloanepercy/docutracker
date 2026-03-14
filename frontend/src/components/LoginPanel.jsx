@@ -128,6 +128,7 @@ export default function LoginPanel({ onForgot, onSuccess }) {
 
     const user = result.data?.user;
     const token = result.data?.token;
+    sessionStorage.setItem("username",JSON.stringify(user.fullName));
     login({ user, token });
     
 

@@ -65,7 +65,7 @@ module.exports = {
   findAccountByEmail: (email) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT account.*, user.role 
+        `SELECT account.*, user.role, user.fullName
          FROM account 
          JOIN user ON account.persal_number = user.persal_number
          WHERE account.email = ?`,

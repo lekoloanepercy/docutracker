@@ -1,47 +1,79 @@
 // navConfig.js
-// Edit the `path`, `label`, and icon names here to match your real routes.
-// Icons are from lucide-react — swap any name freely.
 
 export const MANAGER_NAV = [
   {
     section: "Overview",
     items: [
-      { label: "Dashboard",         path: "/manager/dashboard",  icon: "LayoutDashboard" },
+      {
+        label: "Dashboard",
+        path: "manager/dashboard",
+        icon: "LayoutDashboard",
+      },
     ],
   },
   {
     section: "People",
     items: [
-      { label: "Add users",   path: "manager/team/add",       icon: "Users" },
-      { label: "View/Edit/Remove users",   path: "manager/users",  icon: "Users" },
+      {
+        label: "Add users",
+        path: "manager/team/add",
+        icon: "UserPlus",
+      },
+      {
+        label: "View/Edit/Remove users",
+        path: "manager/users",
+        icon: "Users",
+      },
     ],
   },
-    {
+  {
     section: "Tasks",
     items: [
-      { label: "Add Tasks",   path: "manager/task/add",       icon: "Users" },
-      { label: "View/Edit/Remove tasks",   path: "manager/tasks",  icon: "Users" },
+      {
+        label: "Add Tasks",
+        path: "manager/task/add",
+        icon: "ClipboardPlus",
+      },
+      {
+        label: "View/Edit/Remove tasks",
+        path: "manager/tasks",
+        icon: "ClipboardList",
+      },
     ],
   },
-
-    {
+  {
     section: "Comments",
     items: [
-      { label: "View reports",   path: "manager/reports",       icon: "Users" },
+      {
+        label: "View reports",
+        path: "manager/reports",
+        icon: "MessageSquareText",
+      },
     ],
   },
-
   {
     section: "Insights",
     items: [
-      { label: "Reports",           path: "/manager/reports",    icon: "BarChart3" },
-      { label: "Analytics",         path: "/manager/analytics",  icon: "TrendingUp" },
+      {
+        label: "Reports",
+        path: "/manager/reports",
+        icon: "BarChart3",
+      },
+      {
+        label: "Usage Metrics",
+        path: "manager/metrics",
+        icon: "TrendingUp",
+      },
     ],
   },
   {
     section: "System",
     items: [
-      { label: "Settings",          path: "/manager/settings",   icon: "Settings2" },
+      {
+        label: "Settings",
+        path: "/manager/settings",
+        icon: "Settings2",
+      },
     ],
   },
 ];
@@ -50,22 +82,41 @@ export const WORKER_NAV = [
   {
     section: "My Workspace",
     items: [
-      { label: "My Dashboard",      path: "/worker/dashboard",   icon: "LayoutDashboard" },
-      { label: "My Documents",      path: "/worker/documents",   icon: "FileText" },
+      {
+        label: "My Dashboard",
+        path: "personell/dashboard",
+        icon: "LayoutDashboard",
+      },
     ],
   },
-   {
-    section: "Comments",
-    items: [
-      { label: "View reports",   path: "personell/reports",       icon: "Users" },
-    ],
-  },
-
   {
     section: "Actions",
     items: [
-      { label: "Submit / Upload",   path: "/worker/submit",      icon: "Upload" },
-      { label: "Tasks",             path: "personell/tasks",       icon: "ClipboardList" },
+      {
+        label: "Tasks",
+        path: "personell/tasks",
+        icon: "ClipboardList",
+      },
+    ],
+  },
+  {
+    section: "Comments",
+    items: [
+      {
+        label: "View reports",
+        path: "personell/reports",
+        icon: "MessageSquareText",
+      },
+    ],
+  },
+  {
+    section: "Insights",
+    items: [
+      {
+        label: "Usage Metrics",
+        path: "personell/metrics",
+        icon: "TrendingUp",
+      },
     ],
   },
 ];

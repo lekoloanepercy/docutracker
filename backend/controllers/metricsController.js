@@ -9,14 +9,20 @@ function calcChange(current, previous) {
 
 exports.getMetrics = async (req, res) => {
   try {
-    const { role, persal } = req.query;
-    
+    const { role, persal_number: persal } = req.user;
+
+    if (!role || !persal) {
+      return res.status(400).json({
+        success: true,
+        message: "Role and Persal number are required",
+      });
+    }
     const d = await Metrics.getMetrics(role, persal);
 
     // Derived calculations
     const tasksChange = calcChange(
       d.tasksCompletedCurrent,
-      d.tasksCompletedPrevious
+      d.tasksCompletedPrevious,
     );
 
     const errorRateCurrent =
@@ -43,26 +49,28 @@ exports.getMetrics = async (req, res) => {
 
     const engagementChange = calcChange(engagementCurrent, engagementPrevious);
 
-    res.json({
+    res.status(200).json({
       success: true,
-      tasksCompleted: {
-        current: d.tasksCompletedCurrent,
-        previous: d.tasksCompletedPrevious,
-        change: tasksChange + "%",
-      },
-      errorRate: {
-        current: errorRateCurrent + "%",
-        previous: errorRatePrevious + "%",
-        change: errorRateChange + "%",
-      },
-      userEngagement: {
-        current: engagementCurrent + "%",
-        previous: engagementPrevious + "%",
-        change: engagementChange + "%",
+      metrics: {
+        tasksCompleted: {
+          current: d.tasksCompletedCurrent,
+          previous: d.tasksCompletedPrevious,
+          change: tasksChange + "%",
+        },
+        errorRate: {
+          current: errorRateCurrent + "%",
+          previous: errorRatePrevious + "%",
+          change: errorRateChange + "%",
+        },
+        userEngagement: {
+          current: engagementCurrent + "%",
+          previous: engagementPrevious + "%",
+          change: engagementChange + "%",
+        },
       },
     });
   } catch (err) {
-    console.error("❌ Metrics error:", err);
+    console.error("Metrics error:", err);
     res.status(500).json({ success: false, error: "Database error" });
   }
 };

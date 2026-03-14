@@ -71,7 +71,6 @@ exports.login = async (req, res) => {
     
     const account = await User.findAccountByEmail(email);
     
-    console.log(account);
     if (!account) {
       console.log("About to stop");
       return res
@@ -106,6 +105,7 @@ exports.login = async (req, res) => {
         email: account.email,
         role: account.role,
         persalNumber: account.persal_number,
+        fullName: account.fullName,
       },
       token,
     });

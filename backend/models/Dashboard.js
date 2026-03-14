@@ -39,6 +39,8 @@ module.exports = {
       SELECT 
         COUNT(*) AS totalTasks,
         SUM(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END) AS completedTasks,
+        SUM(CASE WHEN status = 'APPROVED' THEN 1 ELSE 0 END) AS approvedTasks,
+        SUM(CASE WHEN status = 'ERROR' THEN 1 ELSE 0 END) AS erroredTasks,
         SUM(CASE WHEN status = 'PENDING' THEN 1 ELSE 0 END) AS pendingTasks,
         AVG(TIMESTAMPDIFF(SECOND, start_time, finish_time)) AS avgCompletionTime
       FROM task
@@ -47,13 +49,16 @@ module.exports = {
   },
 
   getActiveMembers() {
-    const sql = `SELECT COUNT(*) AS activeMembers FROM user WHERE is_active = 1`;
+    const sql = `SELECT 
+    COUNT(*) AS activeMembers 
+    FROM user WHERE is_active = 1`;
     return this._query(sql);
   },
 
   getReportsSummary() {
     const sql = `
       SELECT 
+      COUNT(*) AS numOfReports,
         SUM(CASE WHEN type = 'ERROR' THEN 1 ELSE 0 END) AS errors,
         SUM(CASE WHEN type = 'SUGGESTION' THEN 1 ELSE 0 END) AS suggestions,
         SUM(CASE WHEN type = 'OTHER' THEN 1 ELSE 0 END) AS other

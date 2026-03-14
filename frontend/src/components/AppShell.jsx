@@ -14,7 +14,7 @@ export default function AppShell() {
 
   const handleLogout = () => {
     logout();           // call your context logout
-    navigate("/login"); // redirect to login
+    navigate("/"); // redirect to login
   };
 
   return (

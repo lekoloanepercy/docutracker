@@ -20,4 +20,10 @@ function formatDate(ts) {
   });
 }
 
-export { formatTime, formatDate };
+function formatAvgTime(raw) {
+  if (!raw) return "--";
+  // e.g. "-33m -50.25s" → strip negatives and clean up
+  return raw.replace(/-/g, "").replace(/\s+/g, " ").trim() || raw;
+}
+
+export { formatTime, formatDate, formatAvgTime };
