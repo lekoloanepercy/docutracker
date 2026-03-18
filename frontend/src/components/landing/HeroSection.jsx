@@ -394,15 +394,17 @@ export default function HeroSection() {
           transform: "translateX(-50%)",
           display: "flex",
           alignItems: "center",
+          flesWrap: "wrap",
           gap: 20,
           animation: "fadeUp 0.5s ease both",
           animationDelay: "0.5s",
+           marginLeft: -130
         }}
       >
         {systemStatus.map((s, i) => (
           <div
             key={i}
-            style={{ display: "flex", alignItems: "center", gap: 6 }}
+            style={{ display: "flex", alignItems: "center", gap: 6, }}
           >
             <span
               style={{

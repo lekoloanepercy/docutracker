@@ -22,7 +22,7 @@ const homeData = {
   systemStatus: [
     "Digitization Hub Online",
     "Task Tracking Active",
-    "Secure Access Enabled",
+   // "Secure Access Enabled",
   ],
 
   about: {

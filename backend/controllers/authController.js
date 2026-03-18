@@ -46,7 +46,7 @@ exports.addUser = async (req, res) => {
     let generatedPassword = pm.generatePassword(email, persal);
 
     //GET RID OF THIS LINE, THEN SEND PASSWORD EMAIL TO THE LINK
-    generatedPassword = "Rosina^*20";
+    generatedPassword = "test02*^";
     // Hash password
     const hashedPassword = await bcrypt.hash(generatedPassword, 10);
 

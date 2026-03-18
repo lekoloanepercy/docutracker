@@ -6,7 +6,7 @@ import Input from "./ui/Input";
 import { loginUser } from "../services/authService";
 import SubmitError from "./ui/SubmitError";
 import { useAuth } from "../context/AuthContext";
-
+import DemoAccessModal from "./DemoAccessModal";
 import { useNavigate } from "react-router-dom";
 // ── SVG Icons ──────────────────────────────────────────────────────────────
 const EyeIcon = () => (
@@ -142,6 +142,7 @@ export default function LoginPanel({ onForgot, onSuccess }) {
 
   return (
     <GlassCard visible={mounted}>
+   
       <BrandHeader subtitle="Sign in to manage your document workflows" />
       <Input
         label="Email address"
