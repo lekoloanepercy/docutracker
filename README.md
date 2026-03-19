@@ -3,6 +3,8 @@ Live demo: https://docutracker.onrender.com
 
 **Status:** WIL Prototype — DHA Digitization Hub
 
+![Screenshot](screenshots/login.png)
+
 DocuTracker is a full stack workflow tracking system built for document dha
 digitization environment — task assignment, tracking staff
 performance, and providing **AI-powered guidance** where it matters most.
@@ -80,4 +82,3 @@ and AI integration in a real digitization environment. Not yet in production.
 
 Lekoloane Nape Percy
 Computer Science Graduate
-![Screenshot](screenshots/dashboard.png)
